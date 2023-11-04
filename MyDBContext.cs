@@ -15,6 +15,8 @@ namespace E_commerce
         
             public DbSet<Product> Product { get; set; }
             public DbSet<Categorie> Categorie { get; set; }
+            
+            public DbSet<Klant> Klant { get; set; }
 
 
 

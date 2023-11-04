@@ -11,6 +11,9 @@
            
 
             <MenuItem Name="miProduct" Header="Product Toevoegen" Click="miProduct_Click"/>
+            <MenuItem Name="miRegistreren" Header="Registreren" Click="miRegistreren_Click"/>
+
+
         </Menu>
     </Grid>
 </Window>

@@ -30,5 +30,10 @@ namespace E_commerce
         {
             new ProductView().Show();
         }
+
+        private void miRegistreren_Click(object sender, RoutedEventArgs e)
+        {
+            new Registratie().Show();
+        }
     }
 }

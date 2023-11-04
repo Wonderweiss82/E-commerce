@@ -1,4 +1,6 @@
-﻿using System;
+﻿using E_commerce.Model;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +15,10 @@ namespace E_commerce
     /// </summary>
     public partial class App : Application
     {
+        internal static MyDBContext context = null;
+
+        public static MainWindow mainWindow = null;
+
+        internal static Klant gebruiker = null;
     }
 }
