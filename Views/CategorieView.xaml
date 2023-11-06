@@ -1,0 +1,38 @@
+﻿<Window x:Class="E_commerce.Views.CategorieView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:E_commerce.Views"
+        mc:Ignorable="d"
+        Title="CategorieView" Height="400" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Label en invoerveld voor Categorie Naam -->
+        <Label Content="Naam:" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10"/>
+        <TextBox x:Name="tbNaam" Grid.Row="0" HorizontalAlignment="Left" Width="250" Height="30" Margin="10"/>
+
+        <!-- Label en invoerveld voor Beschrijving -->
+        <Label Content="Beschrijving:" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10"/>
+        <TextBox x:Name="tbBeschrijving" Grid.Row="1" HorizontalAlignment="Left" Width="250" Height="30" Margin="10"/>
+
+        <!-- Toevoegen knop -->
+        <Button Content="Toevoegen" Click="btToevoegen_Click" Grid.Row="2" Width="100" Height="35" HorizontalAlignment="Center" Margin="0 20"/>
+
+        <!-- Foutmeldingen -->
+        <Label Content="Foutmelding:" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10"/>
+        <TextBox Name="tbErrorMessage" Grid.Row="3" HorizontalAlignment="Left" Width="250" Height="30" Margin="10"/>
+
+        <!-- Succesmeldingen -->
+        <Label Content="Succesmelding:" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10"/>
+        <TextBox Name="tbSuccessMessage" Grid.Row="4" HorizontalAlignment="Left" Width="250" Height="30" Margin="10"/>
+    </Grid>
+</Window>

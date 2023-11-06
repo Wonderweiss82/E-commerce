@@ -35,5 +35,20 @@ namespace E_commerce
         {
             new Registratie().Show();
         }
+
+        private void miLogin_Click(object sender, RoutedEventArgs e)
+        {
+            new Login().Show();
+        }
+
+        private void miBestellen_Click(object sender, RoutedEventArgs e)
+        {
+            new BestellingView().Show();
+        }
+
+        private void miCategorie_Click(object sender, RoutedEventArgs e)
+        {
+            new CategorieView().Show();
+        }
     }
 }

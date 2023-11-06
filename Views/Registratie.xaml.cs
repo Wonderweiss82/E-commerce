@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Navigation;
 
 namespace E_commerce.Views
 {
@@ -20,6 +21,9 @@ namespace E_commerce.Views
     /// </summary>
     public partial class Registratie : Window
     {
+
+        MyDBContext context = new MyDBContext();
+
         public Registratie()
         {
             InitializeComponent();
@@ -27,47 +31,39 @@ namespace E_commerce.Views
 
         private void btRegistreren_Click(object sender, RoutedEventArgs e)
         {
+           
 
-            if (pwWachtwoord.Password == "" || tbNaam.Text == "" || tbGebruiker.Text == "")
+            try
             {
-                tbMededelen.Text = "Alle velden";
-                tbMededelen.Visibility = Visibility.Visible;
-            }
-            if (pwWachtwoord.Password != pwHerhaling.Password)
-            {
-                tbMededelen.Text = "Geef dezelfde wachtwoord";
-                tbMededelen.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                Klant? gebruiker = null;
-                try
-                {
-                    gebruiker = App.context.Klant.First(gebruiker => gebruiker.Naam == tbGebruiker.Text);
-                }
-                catch
-                {
+                
+
+                    context.Klant.Add(new Klant()
 
 
-                    gebruiker = new Klant()
                     {
                         Naam = tbNaam.Text,
                         Email = tbGebruiker.Text,
-                        Wachtwoord = pwWachtwoord.Password
-
-
-                    };
-
-                    App.context.Add(gebruiker);
-                    App.context.SaveChanges();
-                    this.Close();
-
-                }
-
-                tbMededelen.Text = "Bestaat al";
-
+                        Wachtwoord = pwWachtwoord.Password,
+                        Adres = tbAdres.Text
+                    });
+                    
+                context.SaveChanges();
+                MessageBox.Show("Registratie succesvol");
+                this.Close();
+                    
+                
             }
+            catch (Exception ex)
+            {
+                // Vang de uitzondering op en toon een foutmelding of verwerk deze op de gewenste manier.
+                MessageBox.Show("Er is een fout opgetreden: " + ex.Message);
 
+                if (ex.InnerException != null)
+                {
+                    MessageBox.Show("Inner Exception: " + ex.InnerException.Message);
+                }
+            }
         }
+
     }
 }

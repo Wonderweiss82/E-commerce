@@ -18,12 +18,16 @@ namespace E_commerce
             
             public DbSet<Klant> Klant { get; set; }
 
+            public DbSet<Bestelling> Bestellings { get; set; }
+
+            public DbSet<BestelRegel> BestelRegels { get; set; }
+
 
 
             protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             {
-                optionsBuilder.UseSqlServer(@"Server=(Localhost)\;Database=NameOfDatabase;Trusted_Connection=True;
-                MultipleActiveResultSets=true");
+                optionsBuilder.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=E-Commerce;Trusted_Connection=True;
+                MultipleActiveResultSets=true;TrustServerCertificate=true");
             }
         }
     }

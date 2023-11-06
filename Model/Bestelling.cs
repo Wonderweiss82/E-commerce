@@ -13,5 +13,10 @@ namespace E_commerce.Model
         public DateTime Datum { get; set; }
 
         public int KlantId { get; set; }
+
+
+        public Product? Product { get; set; }
+
+       
     }
 }

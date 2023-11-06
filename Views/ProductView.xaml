@@ -39,13 +39,21 @@
                HorizontalAlignment="Center"/>
 
         <ComboBox Name="cmbCategorie" Width="250" Height="35" MouseLeave="DeleteMessage"
-                 Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left"/>
+                 Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" DisplayMemberPath="Naam"/>
 
-        <Label Content="Beschrijving" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" 
+        <Label Content="Categorie ID" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" 
+       HorizontalAlignment="Center"/>
+            <TextBox Name="tbCategorieId" Width="250" Height="35" Grid.Row="5" Grid.Column="1" 
+         HorizontalAlignment="Left"/>
+
+
+            <Label Content="Beschrijving" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" 
                HorizontalAlignment="Center" />
 
         <TextBox Name="tbBeschrijving" Width="250" Height="35" MouseLeave="DeleteMessage"
-                 Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left"/>
+          Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Visibility="Visible"/>
+
+
 
         <Label Content="Voorraadniveau" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" 
                HorizontalAlignment="Center"/>
@@ -54,16 +62,16 @@
                  Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left"/>
 
         <Button x:Name="btToevoegen" Content="Toevoegen" Click="btToevoegen_Click" Background="Green" 
-                Grid.Row="5" Grid.Column="0" Width="100" Height="35" HorizontalAlignment="Center"/>
+                Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Width="100" Height="35" HorizontalAlignment="Center"/>
 
         <Button x:Name="btBijwerken" Content="Bijwerken" Click="btBijwerken_Click" Background="Orange" 
-                Grid.Row="5" Grid.Column="1" Width="100" Height="35" HorizontalAlignment="Center"/>
+                Grid.Row="5" Grid.Column="3" Width="100" Height="35" HorizontalAlignment="Center"/>
 
         <Button x:Name="btVerwijderen" Content="Verwijderen" Click="btVerwijderen_Click" Background="Red" 
                 Grid.Row="5" Grid.Column="2" Width="100" Height="35" HorizontalAlignment="Center"/>
 
         <ListBox x:Name="lbProducten" Width="300" Height="200" Grid.Column="2" Grid.Row="0" 
-         Grid.ColumnSpan="2" Grid.RowSpan="3">
+         Grid.ColumnSpan="2" Grid.RowSpan="3" DisplayMemberPath="Naam">
             <!-- Hier worden de items ingevoegd -->
         </ListBox>
 

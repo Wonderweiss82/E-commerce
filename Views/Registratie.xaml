@@ -65,16 +65,19 @@
                    FontSize="25" HorizontalAlignment="Center" Text="Registreren" Grid.Row="0" Grid.ColumnSpan="2"/>
         <TextBlock Style="{StaticResource stTextBlock}" Text="Naam" Grid.Row="1"/>
         <TextBlock Style="{StaticResource stTextBlock}" Text="E-mail" Grid.Row="2"/>
-        <TextBlock Style="{StaticResource stTextBlock}" Text="Wachtwoord" Grid.Row="3"/>
-        <TextBlock Style="{StaticResource stTextBlock}" Text="Herhaal wachtwoord" Grid.Row="4"/>
+        <TextBlock Style="{StaticResource stTextBlock}" Text="Adres" Grid.Row="3"/>
+        <TextBlock Style="{StaticResource stTextBlock}" Text="Wachtwoord" Grid.Row="4"/>
+        <TextBlock Style="{StaticResource stTextBlock}" Text="Herhaal wachtwoord" Grid.Row="5"/>
 
         <TextBox Style="{StaticResource stTextBox}" Name="tbNaam" Grid.Column="1" Grid.Row="1"/>
         <TextBox Style="{StaticResource stTextBox}" Name="tbGebruiker" Grid.Column="1" Grid.Row="2"/>
+        <TextBox Style="{StaticResource stTextBox}" Name="tbAdres" Grid.Column="1" Grid.Row="3"/>
 
-        <PasswordBox Style="{StaticResource stPasswordBox}" Name="pwWachtwoord" Grid.Column="1" Grid.Row="3"/>
-        <PasswordBox Style="{StaticResource stPasswordBox}" Name="pwHerhaling" Grid.Column="1" Grid.Row="4"/>
 
-        <Button Style="{StaticResource btRegistreren}" Name="btRegistreren" Content="Registreren" Grid.Row="5" Grid.ColumnSpan="2" 
+        <PasswordBox Style="{StaticResource stPasswordBox}" Name="pwWachtwoord" Grid.Column="1" Grid.Row="4"/>
+        <PasswordBox Style="{StaticResource stPasswordBox}" Name="pwHerhaling" Grid.Column="1" Grid.Row="5"/>
+
+        <Button Style="{StaticResource btRegistreren}" Name="btRegistreren" Content="Registreren" Grid.Row="6" Grid.ColumnSpan="2" 
                 Click="btRegistreren_Click"/>
         <TextBlock Style="{StaticResource stTextBlock}" Grid.Row="6" Visibility="Hidden" Width="400" Height="30" Background="Red"
                    HorizontalAlignment="Center" Grid.ColumnSpan="2" Name="tbMededelen"/>

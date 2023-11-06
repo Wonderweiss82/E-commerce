@@ -7,13 +7,35 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-    <Menu>
+        <TextBlock Text="IT-Mail" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Grid.Row="1"/>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="2">
+            <Button Content="Product Toevoegen" Width="120" Margin="10" Click="miProduct_Click"/>
+            <Button Content="Categorie Toevoegen" Width="120" Margin="10" Click="miCategorie_Click"/>
+            <Button Content="Bestellen" Width="120" Margin="10" Click="miBestellen_Click"/>
+        </StackPanel>
+        <Menu>
            
 
             <MenuItem Name="miProduct" Header="Product Toevoegen" Click="miProduct_Click"/>
             <MenuItem Name="miRegistreren" Header="Registreren" Click="miRegistreren_Click"/>
+            <MenuItem Name="miLogin" Header="Inloggen" Click="miLogin_Click"/>
+            <MenuItem Name="miBestellen" Header="Bestellen" Click="miBestellen_Click"/>
+            <MenuItem Name="miCategorie" Header="Categorie Toevoegen" Click="miCategorie_Click"/>
+
 
 
         </Menu>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <!-- Voor de titel -->
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+
+            <!-- Voor de knoppen -->
+        </Grid.RowDefinitions>
+
+       
+        
     </Grid>
 </Window>

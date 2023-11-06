@@ -22,7 +22,7 @@ namespace E_commerce.Views
     {
         
         List<Categorie> categorie = null;
-        Categorie selectedCategorie = null;
+        Categorie selectedCategorie = new Categorie();
         List<Product> product = null;   
         MyDBContext context = new MyDBContext();
         public ProductView()
@@ -30,34 +30,30 @@ namespace E_commerce.Views
             InitializeComponent();
 
 
-            
 
-            // Lijst van categorieën
-            List<string> categorieen = new List<string>
-        {
-            "Toetsenborden",
-            "Monitoren",
-            "Printers",
-            "Netwerkapparatuur",
-            "Grafische kaarten",
-            // Voeg hier meer categorieën toe
-        };
 
-            // Koppel de lijst van categorieën aan de ComboBox
-            cmbCategorie.ItemsSource = categorieen;
+
 
             // Lijst van producten voor de ListBox
-            List<string> producten = new List<string>
-        {
-            "Muis",
-            "USB-drive",
-            "HDMI-kabel",
-            "Externe harde schijf",
-            // Voeg hier meer producten toe
-        };
+            using (MyDBContext context = new MyDBContext())
+            {
+                // Query de producten uit de database
+                product = context.Product.ToList();
 
-            // Koppel de lijst van producten aan de ListBox
-            lbProducten.ItemsSource = producten;
+                // Koppel de lijst van producten aan de ListBox
+                lbProducten.ItemsSource = product;
+            }
+
+            using (MyDBContext context = new MyDBContext())
+            {
+                // Query de producten uit de database
+                categorie = context.Categorie.ToList();
+
+
+                // Koppel de lijst van producten aan de ListBox
+                cmbCategorie.ItemsSource = categorie;                              
+            }
+
         }
 
 
@@ -73,23 +69,59 @@ namespace E_commerce.Views
         {
             // toon een foutboodschap
 
-            tbBeschrijving.Visibility = Visibility.Hidden;
         }
 
         private void btToevoegen_Click(object sender, RoutedEventArgs e)
         {
-            context.Product.Add(new Product
+            try
             {
-                Naam = tbNaam.Text,
-                Beschrijving = tbBeschrijving.Text,
-                Categorie = selectedCategorie,
-                voorraadNiveau =  int.Parse(tbVoorraadniveau.Text)
+                if (int.TryParse(tbCategorieId.Text, out int categorieId))
+                {
+                    // Controleer of de opgegeven CategorieID overeenkomt met een bestaande categorie
+                    var bestaandeCategorie = context.Categorie.FirstOrDefault(c => c.Id == categorieId);
 
-        }) ;
-            context.SaveChanges();
-            product = context.Product.Where(p => p.CategorieId == selectedCategorie.Id).ToList();
-            lbProducten.ItemsSource = product;
+                    if (bestaandeCategorie != null)
+                    {
+                        // De categorie bestaat, je kunt doorgaan met het toevoegen van het product
+                        context.Product.Add(new Product
+                        {
+                            Naam = tbNaam.Text,
+                            Beschrijving = tbBeschrijving.Text,
+                            CategorieId = categorieId, // Vergelijk de Categorie.ID met categorieId
+                            voorraadNiveau = int.Parse(tbVoorraadniveau.Text)
+                        });
+
+                        context.SaveChanges();
+
+                        // Vernieuw de lijst van producten na toevoegen
+                        product = context.Product.Where(p => p.CategorieId == categorieId).ToList();
+                        lbProducten.ItemsSource = product;
+
+                        ClearMessage();
+                    }
+                    else
+                    {
+                        // De categorie bestaat niet, geef een foutmelding of verwerk dit op de gewenste manier
+                        MessageBox.Show("De opgegeven categorie bestaat niet.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Ongeldige CategorieID. Voer een numerieke waarde in.");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Vang de uitzondering op en toon een foutmelding of verwerk deze op de gewenste manier.
+                MessageBox.Show("Er is een fout opgetreden: " + ex.Message);
+                if (ex.InnerException != null)
+                {
+                    MessageBox.Show("Inner Exception: " + ex.InnerException.Message);
+                }
+            }
         }
+
+
 
         private void btBijwerken_Click(object sender, RoutedEventArgs e)
         {

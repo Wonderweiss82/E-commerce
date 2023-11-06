@@ -17,7 +17,7 @@ namespace E_commerce
     {
         internal static MyDBContext context = null;
 
-        public static MainWindow mainWindow = null;
+        public static MainWindow mainWindow = new MainWindow();
 
         internal static Klant gebruiker = null;
     }
