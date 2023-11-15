@@ -4,6 +4,7 @@ using E_commerce;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace E_commerce.Migrations
 {
     [DbContext(typeof(MyDBContext))]
-    partial class MyDBContextModelSnapshot : ModelSnapshot
+    [Migration("20231113131625_VoegProductIdToeAanBestelling")]
+    partial class VoegProductIdToeAanBestelling
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -107,9 +110,6 @@ namespace E_commerce.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsAdmin")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Naam")
                         .IsRequired()

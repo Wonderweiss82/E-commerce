@@ -125,7 +125,7 @@ namespace E_commerce.Views
 
         private void btBijwerken_Click(object sender, RoutedEventArgs e)
         {
-
+            new ProductBijwerken().Show();
         }
 
         private void btVerwijderen_Click(object sender, RoutedEventArgs e)

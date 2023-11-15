@@ -8,16 +8,17 @@ using System.Threading.Tasks;
 
 namespace E_commerce.Model
 {
-    internal class Klant
+    public class Klant
     {
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int KlantID { get; set; }
+       public int KlantID { get; set; }
        public string Naam {  get; set; }
        public string Email  {  get; set; } 
        
-        public string Adres { get; set; }
+       public bool IsAdmin { get; set; }
+       public string Adres { get; set; }
        public string Wachtwoord { get; set; }
     }
 }

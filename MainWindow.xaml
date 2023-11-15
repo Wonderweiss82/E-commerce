@@ -1,41 +1,44 @@
 ﻿<Window x:Class="E_commerce.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:E_commerce"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <TextBlock Text="IT-Mail" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Grid.Row="1"/>
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="2">
-            <Button Content="Product Toevoegen" Width="120" Margin="10" Click="miProduct_Click"/>
-            <Button Content="Categorie Toevoegen" Width="120" Margin="10" Click="miCategorie_Click"/>
-            <Button Content="Bestellen" Width="120" Margin="10" Click="miBestellen_Click"/>
-        </StackPanel>
-        <Menu>
-           
+        Title="IT-Mall" Height="450" Width="800">
+    <Grid Background="#F0F8FF">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock Text="IT-Mall" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48" FontWeight="Bold" Foreground="#007FFF" Grid.Row="1"/>
 
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="2">
+            <Button Content="Show Products" Width="120" Margin="10" Background="#007FFF" Foreground="White" Click="ShowProductsButton_Click" />
+            <Button Name="btProduct" Content="Product Toevoegen" Width="120" Margin="10" Background="#007FFF" Foreground="White" Click="miProduct_Click"/>
+            <Button Name="btCategorie" Content="Categorie Toevoegen" Width="120" Margin="10" Background="#007FFF" Foreground="White" Click="miCategorie_Click"/>
+            <Button Name="btBestellen" Content="Bestellen" Width="120" Margin="10" Background="#007FFF" Foreground="White" Click="miBestellen_Click"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="3">
+            <Button Name="btLogin" Content="Inloggen" Width="120" Margin="10" Background="#007FFF" Foreground="White" Click="miLogin_Click"/>
+            <Button Name="btRegistreren" Content="Registreren" Width="120" Margin="10" Background="#007FFF" Foreground="White" Click="miRegistreren_Click"/>
+            <Button Name="btUitloggen" Content="Uitloggen" Width="120" Margin="10" Background="#007FFF" Foreground="White" Click="miUitloggen_Click"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="4">
+            <StatusBar Height="30">
+                <TextBlock x:Name="MededelingenTextBlock" Width="200" />
+            </StatusBar>
+        </StackPanel>
+
+        <Menu>
             <MenuItem Name="miProduct" Header="Product Toevoegen" Click="miProduct_Click"/>
             <MenuItem Name="miRegistreren" Header="Registreren" Click="miRegistreren_Click"/>
             <MenuItem Name="miLogin" Header="Inloggen" Click="miLogin_Click"/>
             <MenuItem Name="miBestellen" Header="Bestellen" Click="miBestellen_Click"/>
             <MenuItem Name="miCategorie" Header="Categorie Toevoegen" Click="miCategorie_Click"/>
-
-
-
+            <MenuItem Name="miBeheerder" Header="Beheerder" Click="miBeheerder_Click"/>
+            <MenuItem Name="miUitloggen" Header="Uitloggen" Click="miUitloggen_Click"/>
         </Menu>
-
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <!-- Voor de titel -->
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-
-            <!-- Voor de knoppen -->
-        </Grid.RowDefinitions>
-
-       
-        
     </Grid>
 </Window>

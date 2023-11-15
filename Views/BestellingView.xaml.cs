@@ -19,7 +19,7 @@ namespace E_commerce.Views
 {
     public partial class BestellingView : Window
     {
-        MyDBContext context = new MyDBContext(); 
+        MyDBContext context = new MyDBContext();
         List<Product> product = null;
 
         public BestellingView()
@@ -41,17 +41,35 @@ namespace E_commerce.Views
         {
             try
             {
-                /*context.Bestellings.Add(new Bestelling
+                if (cmbProducten.SelectedItem != null)
                 {
-                    Datum = DatePickerDatum.SelectedDate ?? DateTime.Now,
-                    KlantId = int.Parse(TxtKlantId.Text),
-                    // ProductId ophalen uit de geselecteerde ComboBox-waarde (CmbProduct)
-                    //product.ProductId = ((Product)CmbProduct.SelectedItem).ProductId;
-                });*/
-                
-                context.SaveChanges(); // Bewaar de wijzigingen in de database
+                    if (cmbProducten.SelectedItem != null)
+                    {
+                        var selectedProduct = (Product)cmbProducten.SelectedItem;
+                        Console.WriteLine($"Geselecteerd product: {selectedProduct.Id}, {selectedProduct.Naam}");
+                        // Andere logica...
+                    }
 
-                MessageBox.Show("Bestelling is succesvol toegevoegd aan de database.", "Succes", MessageBoxButton.OK, MessageBoxImage.Information);
+                    /*context.Bestellings.Add(new Bestelling
+                    {
+                        Datum = DatePickerDatum.SelectedDate ?? DateTime.Now,
+                        KlantId = int.Parse(TxtKlantId.Text),
+                        // ProductId ophalen uit de geselecteerde ComboBox-waarde (CmbProduct)
+                        ProductId = ((Product)cmbProducten.SelectedItem).Id
+                    });*/
+
+                    context.SaveChanges(); // Bewaar de wijzigingen in de database
+
+                    MessageBox.Show("Bestelling is succesvol toegevoegd aan de database.", "Succes", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Selecteer een product voordat je een bestelling toevoegt.", "Fout", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            catch (DbUpdateException dbEx)
+            {
+                MessageBox.Show("Databasefout bij het toevoegen van de bestelling: " + dbEx.Message, "Fout", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (Exception ex)
             {
@@ -60,3 +78,4 @@ namespace E_commerce.Views
         }
     }
 }
+
